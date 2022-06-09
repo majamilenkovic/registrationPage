@@ -3,7 +3,8 @@
 
 // BUG: na prvom mestu grad pa postanski broj zbog autocomplete
 
-describe("Legal entity registration", () => {
+describe("TC-007/008 Legal entity registration", () => {
+
     //ne clearuje polja nakon refresh
 
     let uuid = () => Cypress._.random(0, 1e6)
@@ -25,14 +26,15 @@ describe("Legal entity registration", () => {
 
         cy.get("input#RegisterAsCompany").check();
 
-        cy.get("#RegisterAsCompany").type('Eurometalic');
+        cy.get("#Company").type('Eurometalic');
         cy.get("#CompanyOIB").type('677967667');
         cy.get("#CompanyEmail").type(email);
         cy.get("#CompanyTelephone").type(phoneNumber);
         cy.get("#CompanyContactPerson").type(firstName);
         cy.get("#CompanyAddress").type('Cvecarska 13');
-        cy.get("#CompanyTelephone").select('ui-id-2');
         cy.get("#CompanyTelephone").type(phoneNumber);
+
+        cy.get("input#gender-male").check();
 
         cy.get("#FirstName").type(firstName);
         cy.get("#LastName").type(lastName);
@@ -42,22 +44,21 @@ describe("Legal entity registration", () => {
         cy.get("select[name='DateOfBirthYear']").select('1988');//Nema id na datumu
 
         cy.get("#Email").type(email);
-        
-        cy.get("#StreetAddress").type("Cvecarska 13");
-        cy.get("#65eb7bc9-1e79-4187-85c7-d2f8cbd9289a").select('ui-id-82'); // da li je unique id, mora prvo grad zbog autocomplete
 
-        cy.get('Phone').type(phoneNumber);
+        cy.get("#StreetAddress").type("Cvecarska 13");
+
+        cy.get('#Phone').type(phoneNumber);
 
         cy.get('#Newsletter').check(); // BUG: pise da je required field
 
         cy.get("#Password").type(pass);
         cy.get("#ConfirmPassword").type(pass);
 
-        cy.get("register-button").click();      
+        cy.get("#register-button").click();
 
     });
 
-    
+
     it("should verify successful legal entity registration with some optional fields left empty", () => {
 
         cy.get("input#RegisterAsCompany").check();
@@ -71,12 +72,12 @@ describe("Legal entity registration", () => {
 
         cy.get("#Email").type(email);
 
-        cy.get('Phone').type(phoneNumber);
+        cy.get('#Phone').type(phoneNumber);
 
         cy.get("#Password").type(pass);
         cy.get("#ConfirmPassword").type(pass);
 
-        cy.get("register-button").click();
+        cy.get("#register-button").click();
 
     });
 

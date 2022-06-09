@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("Telefon field boundary testing (For 10 digit phone number - I do not see any other constraints)", () => {
+describe("TC-004 Phone field boundary testing (For 10 digit phone number - I do not see any other constraints", () => {
 
     beforeEach(() => {
 
@@ -13,11 +13,11 @@ describe("Telefon field boundary testing (For 10 digit phone number - I do not s
         let lastName = "Mrdja";
         let pass = "maja123"
 
-        cy.get("#FirstName").type(firstName);
-        cy.get("#LastName").type(lastName);
-        cy.get("#Email").type(email);
-        cy.get("#Password").type(pass);
-        cy.get("#ConfirmPassword").type(pass);
+        cy.clearInput('#FirstName', firstName);
+        cy.clearInput('#LastName', lastName);
+        cy.clearInput('#Email', email);
+        cy.clearInput('#Password', pass);
+        cy.clearInput('#ConfirmPassword', pass);
 
     });
 

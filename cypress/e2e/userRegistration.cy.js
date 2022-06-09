@@ -3,7 +3,7 @@
 
 // BUG: na prvom mestu grad pa postanski broj zbog autocomplete
 
-describe("Regular user registration", () => {
+describe("TC-005/006 Regular user registration", () => {
 
     let uuid = () => Cypress._.random(0, 1e6)
     let id = uuid()
