@@ -3,7 +3,7 @@
 // BUG: Nakon refresha se ne cleaar-uju polja
 // BUG: Checkbox: 'Register As Company' must not be empty. (trebalo bi da bude prazno za regular user)
 
-describe("Verify required fields for regular user and legal entity", () => {
+describe("TC-001 Verify required fields for regular user and legal entity", () => {
   
   before(() => {
 
@@ -20,7 +20,7 @@ describe("Verify required fields for regular user and legal entity", () => {
 
     cy.get("input#FirstName")
       .invoke("attr", "data-val-required")
-      .should("eq", "Ime je potrebno"); // BUG 1: Nema tacku na kraju recenice, na Prezimenu ima!
+      .should("eq", "Ime je potrebno");
   });
 
   it("should Prezime field be mandatory", () => {

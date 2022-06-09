@@ -19,7 +19,6 @@ describe("Lozinka field", () => {
         let invalidPassword = "12345";
 
         cy.get("#FirstName").type(firstName);
-
         cy.get("#LastName").type(lastName);
 
         cy.get("#Email").type(email);
@@ -44,7 +43,6 @@ describe("Lozinka field", () => {
         let validPassword = "123456";
 
         cy.get("#FirstName").type(firstName);
-
         cy.get("#LastName").type(lastName);
 
         cy.get("#Email").type(email);

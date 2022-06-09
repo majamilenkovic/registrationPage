@@ -9,9 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^10.0.2"
+    "cypress": "^10.0.2",
+    "cypress-plugin-tab": "^1.0.5"
   },
-  "dependencies": {
- 
-  }
+  "dependencies": {}
 }

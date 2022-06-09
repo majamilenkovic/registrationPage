@@ -25,8 +25,7 @@ describe("Telefon field boundary testing (For 10 digit phone number - I do not s
 
         cy.get("#Phone").type('00000 00000');
         cy.get('#register-button').click();
-        //Proveri sa Dusanom
-        /*Note for page transition Cypress automatically detects things like a page transition event and will automatically halt running commands until the next page has finished loading */
+        //Note for page transition Cypress automatically detects things like a page transition event and will automatically halt running commands until the next page has finished loading
     });
 
     it("should verify just below the minimum value case ", () => {
