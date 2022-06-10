@@ -1,55 +1,46 @@
 /// <reference types="cypress" />
 
 describe("TC-004 Phone field boundary testing (For 10 digit phone number - I do not see any other constraints", () => {
+  beforeEach(() => {
+    cy.visit("https://www.links.hr/hr/register");
 
-    beforeEach(() => {
+    let uuid = () => Cypress._.random(0, 1e6);
+    let id = uuid();
+    let email = `${id}@gmail.com`;
+    let firstName = "Maja";
+    let lastName = "Mrdja";
+    let pass = "maja123";
 
-        cy.visit("https://www.links.hr/hr/register");
+    cy.clearInput("#FirstName", firstName);
+    cy.clearInput("#LastName", lastName);
+    cy.clearInput("#Email", email);
+    cy.clearInput("#Password", pass);
+    cy.clearInput("#ConfirmPassword", pass);
+  });
 
-        let uuid = () => Cypress._.random(0, 1e6)
-        let id = uuid()
-        let email = `${id}@gmail.com`;
-        let firstName = "Maja";
-        let lastName = "Mrdja";
-        let pass = "maja123"
+  it("should verify minimum value case", () => {
+    cy.get("#Phone").type("00000 00000");
+    cy.get("#register-button").click();
+    //Note for page transition Cypress automatically detects things like a page transition event and will automatically halt running commands until the next page has finished loading
+  });
 
-        cy.clearInput('#FirstName', firstName);
-        cy.clearInput('#LastName', lastName);
-        cy.clearInput('#Email', email);
-        cy.clearInput('#Password', pass);
-        cy.clearInput('#ConfirmPassword', pass);
+  it("should verify just below the minimum value case ", () => {
+    cy.get("#Phone").type("09999 99999");
+    cy.get("#register-button").click();
+  });
 
-    });
+  it("should verify just above the  minimum value case ", () => {
+    cy.get("#Phone").type("10000 00000");
+    cy.get("#register-button").click();
+  });
 
-    it("should verify minimum value case", () => {
+  it("should verify maximum value case ", () => {
+    cy.get("#Phone").type("99999 99999");
+    cy.get("#register-button").click();
+  });
 
-        cy.get("#Phone").type('00000 00000');
-        cy.get('#register-button').click();
-        //Note for page transition Cypress automatically detects things like a page transition event and will automatically halt running commands until the next page has finished loading
-    });
-
-    it("should verify just below the minimum value case ", () => {
-
-        cy.get("#Phone").type('09999 99999');
-        cy.get('#register-button').click();
-    });
-
-    it("should verify just above the  minimum value case ", () => {
-
-        cy.get("#Phone").type('10000 00000');
-        cy.get('#register-button').click();
-    });
-
-    it("should verify maximum value case ", () => {
-
-        cy.get("#Phone").type('99999 99999');
-        cy.get('#register-button').click();
-    });
-
-    it("should verify just above the  maximum value case ", () => {
-
-        cy.get("#Phone").type('1 00000 00000');
-        cy.get('#register-button').click();
-    });
-
+  it("should verify just above the  maximum value case ", () => {
+    cy.get("#Phone").type("1 00000 00000");
+    cy.get("#register-button").click();
+  });
 });
